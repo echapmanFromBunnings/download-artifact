@@ -1,4 +1,4 @@
-name: Download artifact
+name: Download artifacts
 description: Wrapper around GitHub's official action, with additional extraction before download
 
 # https://github.com/actions/download-artifact/blob/main/action.yml
