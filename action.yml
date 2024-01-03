@@ -1,0 +1,33 @@
+name: Download artifact
+description: Wrapper around GitHub's official action, with additional extraction before download
+
+# https://github.com/actions/download-artifact/blob/main/action.yml
+inputs:
+  name:
+    description: Artifact name
+    required: true
+  path:
+    description: Destination path
+    required: false
+    default: .
+
+branding:
+  icon: 'download-cloud'
+  color: 'gray-dark'
+
+runs:
+  using: composite
+  steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.path }}
+    - name: Extract artifacts
+      shell: bash
+      run: tar -xvf ${{ inputs.name }}.tar
+      working-directory: ${{ inputs.path }}
+    - name: Remove archive
+      working-directory: ${{ inputs.path }}
+      shell: bash
+      run: rm -f ${{ inputs.name }}.tar
