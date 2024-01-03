@@ -33,7 +33,7 @@ To use this action in your workflow, include it as a step in your **.yml** workf
 
 ```yaml
 steps:
-- uses: echapmanFromBunnings/download-artifact@main
+- uses: echapmanFromBunnings/download-artifact@v3.0.0
   with:
     name: 'artifact-name'
     path: './path/to/destination' # Optional
